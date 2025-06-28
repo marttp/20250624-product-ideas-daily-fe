@@ -54,6 +54,7 @@ export class App {
     
     this.opportunities$.subscribe(opportunities => {
       if (opportunities.length === 0) {
+        console.log('No opportunities found, initializing session...');
         this.initializeSession();
       }
     });
