@@ -1,20 +1,66 @@
-<div *ngIf="opportunities$ | async as opportunities">
-  <div *ngFor="let opportunity of opportunities">
-    <h1>{{ opportunity.name }}</h1>
-    <p>{{ opportunity.concept }}</p>
-    <p><strong>Business Domain:</strong> {{ opportunity.business_domain }}</p>
-    <p><strong>Target Market:</strong> {{ opportunity.target_market }}</p>
-    <p><strong>Unique Value Proposition:</strong> {{ opportunity.unique_value_proposition }}</p>
-    <p><strong>Technical Feasibility:</strong> {{ opportunity.technical_feasibility }}</p>
-    <h2>Internal Modules:</h2>
-    <ul>
-      <li *ngFor="let module of opportunity.internal_modules">{{ module }}</li>
-    </ul>
-    <h2>Implementation Cost:</h2>
-    <ul>
-      <li *ngFor="let cost of opportunity.implementation_cost">{{ cost }}</li>
-    </ul>
-    <p><strong>Risk for Solopreneur:</strong> {{ opportunity.risk_for_solopreneur }}</p>
-    <p><a [href]="opportunity.source_url" target="_blank">Source</a></p>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Product Ideas Daily</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="container" *ngIf="opportunities$ | async as opportunities">
+  <div class="opportunities-grid">
+    <mat-card *ngFor="let opportunity of opportunities" class="opportunity-card">
+      <mat-card-header>
+        <mat-card-title>{{ opportunity.name }}</mat-card-title>
+        <mat-card-subtitle>{{ opportunity.business_domain }}</mat-card-subtitle>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <p class="concept">{{ opportunity.concept }}</p>
+        
+        <mat-divider></mat-divider>
+        
+        <div class="detail-section">
+          <h3>Target Market</h3>
+          <p>{{ opportunity.target_market }}</p>
+        </div>
+        
+        <div class="detail-section">
+          <h3>Unique Value Proposition</h3>
+          <p>{{ opportunity.unique_value_proposition }}</p>
+        </div>
+        
+        <div class="detail-section">
+          <h3>Technical Feasibility</h3>
+          <mat-chip-set>
+            <mat-chip>{{ opportunity.technical_feasibility }}</mat-chip>
+          </mat-chip-set>
+        </div>
+        
+        <div class="detail-section">
+          <h3>Internal Modules</h3>
+          <mat-chip-set>
+            <mat-chip *ngFor="let module of opportunity.internal_modules">
+              {{ module }}
+            </mat-chip>
+          </mat-chip-set>
+        </div>
+        
+        <div class="detail-section">
+          <h3>Implementation Cost</h3>
+          <ul class="cost-list">
+            <li *ngFor="let cost of opportunity.implementation_cost">{{ cost }}</li>
+          </ul>
+        </div>
+        
+        <div class="detail-section">
+          <h3>Risk for Solopreneur</h3>
+          <p>{{ opportunity.risk_for_solopreneur }}</p>
+        </div>
+      </mat-card-content>
+      
+      <mat-card-actions align="end">
+        <a mat-raised-button color="primary" [href]="opportunity.source_url" target="_blank">
+          View Source
+        </a>
+      </mat-card-actions>
+    </mat-card>
   </div>
 </div>
