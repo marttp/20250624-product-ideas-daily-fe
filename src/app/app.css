@@ -73,6 +73,27 @@ mat-divider {
   margin: 16px 0;
 }
 
+.empty-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  margin-top: 24px;
+}
+
+.empty-state-card {
+  max-width: 600px;
+  text-align: center;
+}
+
+.empty-message {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+  padding: 24px;
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 16px;

@@ -5,7 +5,7 @@
 </mat-toolbar>
 
 <div class="container" *ngIf="opportunities$ | async as opportunities">
-  <div class="opportunities-grid">
+  <div class="opportunities-grid" *ngIf="opportunities.length > 0">
     <mat-card *ngFor="let opportunity of opportunities" class="opportunity-card">
       <mat-card-header>
         <mat-card-title>{{ opportunity.name }}</mat-card-title>
@@ -61,6 +61,16 @@
           View Source
         </a>
       </mat-card-actions>
+    </mat-card>
+  </div>
+  
+  <div class="empty-state" *ngIf="opportunities.length === 0">
+    <mat-card class="empty-state-card">
+      <mat-card-content>
+        <p class="empty-message">
+          Congratulations for your 1st visited of the day, please come back later once data is ready ~ 5m
+        </p>
+      </mat-card-content>
     </mat-card>
   </div>
 </div>
