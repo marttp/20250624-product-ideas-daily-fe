@@ -1,6 +1,6 @@
-# ProductIdeasDailyFe
+# Product Ideas Daily
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.4.
+Product Ideas Daily is an Angular application that helps you discover and track daily product ideas and opportunities.
 
 ## Development server
 
@@ -10,21 +10,7 @@ To start a local development server, run:
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
+Once the server is running, open your browser and navigate to `http://localhost:4200/`.
 
 ## Building
 
@@ -34,26 +20,31 @@ To build the project run:
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Firebase Hosting deployment
 
-## Running unit tests
+To deploy the application to Firebase Hosting
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+1. Create .firebaserc file in the root directory. Example:
 
-```bash
-ng test
+```json
+{
+  "projects": {
+    "default": "????"
+  }
+}
 ```
 
-## Running end-to-end tests
+2. Replace value in environment.ts file
 
-For end-to-end (e2e) testing, run:
+3. Build the project
 
 ```bash
-ng e2e
+ng build --configuration production
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+4. Deploy to Firebase Hosting
 
-## Additional Resources
+```bash
+firebase deploy --only hosting
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
