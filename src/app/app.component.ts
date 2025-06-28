@@ -51,7 +51,12 @@ export class App {
     this.opportunities$ = docData(productIdeasDocument).pipe(
       map((data: any) => data?.opportunities || [])
     ) as Observable<Opportunity[]>;
-    this.initializeSession();
+    
+    this.opportunities$.subscribe(opportunities => {
+      if (opportunities.length === 0) {
+        this.initializeSession();
+      }
+    });
   }
 
   private generateUUID(): string {
